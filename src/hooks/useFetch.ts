@@ -9,8 +9,8 @@ export function useFetch<T = unknown>(url: string, config?: AxiosRequestConfig) 
   const [error, setError] = useState<Error | null>(null)
 
   useEffect(() => {
-    axios.get(url, config)
-      .then((response) => setData(response.data))
+    api.get(url, config)
+      .then((response) => { setData(response.data); setError(null) })
       .catch((error) => setError(error))
       .finally(() => setIsFetching(false))
   }, [])
